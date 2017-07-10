@@ -1,0 +1,54 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	controllerName="sap.vi.VehicleDetails.controller.vehicleDetails.TripsBlockController">
+	<Table inset="false" items="{ path: 'data>/ClassifiedTrips', sorter: { path: 'TripStartPointInTime', descending: true } }">
+		<headerToolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button text="{i18n>VehicleDetails.TripsBlock.GoToLogbook}" type="Transparent" press="onGoToLogbook" visible="{blockdata>/logbookAvailable}" />
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>VehicleDetails.TripsBlock.From}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>VehicleDetails.TripsBlock.To}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>VehicleDetails.TripsBlock.Departure}"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>VehicleDetails.TripsBlock.Arrival}"/>
+			</Column>
+			<Column minScreenWidth="Tablet">
+				<Text text="{i18n>VehicleDetails.TripsBlock.Duration}"/>
+			</Column>
+			<Column minScreenWidth="Tablet">
+				<Text text="{i18n>VehicleDetails.TripsBlock.Distance} (km)"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="{i18n>VehicleDetails.TripsBlock.TripClass}"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						title="{ path:'data>StartLocationInfoRoad'}"
+						text="{ path:'data>StartLocationInfoCity'}" />
+					<ObjectIdentifier
+						title="{ path:'data>EndLocationInfoRoad' }"
+						text="{ path:'data>EndLocationInfoCity'}" />
+					<Text text="{ path:'data>TripStartPointInTime', type: 'sap.ui.model.type.DateTime', formatOptions: {style: 'short'}}"/>
+					<Text text="{ path:'data>TripEndPointInTime', type: 'sap.ui.model.type.DateTime', formatOptions: {style: 'short'}}"/>
+					<Text text="{parts: [{path:'data>TripStartPointInTime'}, {path:'data>TripEndPointInTime'}], formatter: '.formatter.durationNoText' }"/>
+					<Text text="{
+						parts: [{path:'data>Distance'}],
+						formatter: '.formatDistance'
+					}"/>
+					<Text text="{ path:'data>TripClassTripName'}"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

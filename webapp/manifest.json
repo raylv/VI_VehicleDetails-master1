@@ -1,0 +1,156 @@
+{
+	"_version": "1.2.0",
+	"sap.app": {
+		"_version": "1.2.0",
+		"id": "sap.vi.VehicleDetails",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"dataSources": {
+			"vehicleInsights": {
+				"uri": "/destinations/vi/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.32.0"
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"intent1": {
+					"signature": {
+						"parameters": {
+							"vehicleUID": {}
+						},
+						"additionalParameters": "ignored"
+					},
+					"semanticObject": "vehicledetails",
+					"action": "display",
+					"title": "vehicledetails",
+					"info": "Displays detailed information of a vehicle",
+					"icon": "sap-icon://car-rental",
+					"subTitle": "vehicledetailssubtitle"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_belize",
+			"sap_hcb",
+			"sap_bluecrystal"
+		],
+		"fullWidth": true
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "sap.vi.VehicleDetails.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.vi.VehicleDetails.i18n.i18n"
+				}
+			},
+			"vehicleInsights": {
+				"dataSource": "vehicleInsights",
+				"settings": {
+					"useBatch": false,
+					"disableHeadRequestForToken": true
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.vi.VehicleDetails.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide"
+			},
+			"bypassed": {
+				"target": "VehicleSelection"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Vehicleselection",
+					"target": "Vehicleselection"
+				},
+				{
+					"pattern": "",
+					"name": "appHome",
+					"target": "Vehicleselection"
+				},
+				{
+					"pattern": "VehicleDetails/{vehicleUID}",
+					"name": "VehicleDetails",
+					"target": "VehicleDetails"
+				}
+			],
+			"targets": {
+				"Vehicleselection": {
+					"viewName": "Vehicleselection",
+					"viewLevel": 1
+				},
+				"VehicleDetails": {
+					"viewName": "VehicleDetails",
+					"viewLevel": 2
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

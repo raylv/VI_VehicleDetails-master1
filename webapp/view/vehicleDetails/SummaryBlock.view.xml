@@ -1,0 +1,54 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core" 
+	xmlns:vbm="sap.ui.vbm"
+	controllerName="sap.vi.VehicleDetails.controller.vehicleDetails.SummaryBlockController">
+	<l:Grid
+		hSpacing="0"
+		defaultSpan="L6 M6 S12">
+			<l:content>
+				<f:SimpleForm
+					maxContainerCols="2"
+					editable="false"
+					layout="ResponsiveGridLayout"
+					labelSpanL="4"
+					labelSpanM="4"
+					emptySpanL="0"
+					emptySpanM="0"
+					columnsL="2"
+					columnsM="2">
+					<f:content>
+						<core:Title text="" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.VIN}" />
+						<Text text="{vehicleInsights>ID}" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.IDSpace}" />
+						<Text text="{vehicleInsights>IDSpace}" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.LastDataReceived}" />
+						<Text text="{ path: 'blockdata>/lastMessageReceived', type: 'sap.ui.model.type.DateTime', formatOptions: {style: 'medium'}}" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.NumberOfProperties}" />
+						<Text text="{ path: 'blockdata>/numberOfProperties' }" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.MostRecentTrip}" />
+						<Text text="
+						{ path: 'data>/ClassifiedTrips/0/StartLocationInfoRoad' }\n
+						{ path: 'data>/ClassifiedTrips/0/StartLocationInfoCity' }\n
+						\n
+						{ path: 'data>/ClassifiedTrips/0/EndLocationInfoRoad' }\n
+						{ path: 'data>/ClassifiedTrips/0/EndLocationInfoCity' }" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.Departure}" />
+						<Text text="{ path: 'data>/ClassifiedTrips/0/TripStartPointInTime', type: 'sap.ui.model.type.DateTime', formatOptions: {style: 'medium'}}" />
+						<Label text="{i18n>VehicleDetails.SummaryBlock.Arrival}" />
+						<Text text="{ path: 'data>/ClassifiedTrips/0/TripEndPointInTime', type: 'sap.ui.model.type.DateTime', formatOptions: {style: 'medium'}}" />
+					</f:content>
+				</f:SimpleForm>
+				<Panel expandable="false" expanded="true" headerText="{i18n>VehicleDetails.SummaryBlock.LastKnownPos}" class="sapUiNoMargin sapUiNoContentPadding">
+					<Panel expandable="false" expanded="true" class="sapUiNoMargin sapUiNoContentPadding" width="100%">
+						<vbm:GeoMap id="GeoMap" height="250px" navcontrolVisible="false" enableAnimation="false" width="100%">
+						</vbm:GeoMap>
+					</Panel>
+				</Panel>
+		</l:content>
+	</l:Grid>
+</mvc:View>

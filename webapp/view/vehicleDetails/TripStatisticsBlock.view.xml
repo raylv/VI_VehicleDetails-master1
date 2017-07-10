@@ -1,0 +1,40 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core"
+	xmlns:mc="sap.suite.ui.microchart"
+	xmlns:commons="sap.suite.ui.commons"
+	controllerName="sap.vi.VehicleDetails.controller.vehicleDetails.TripStatisticsBlockController" >
+		<commons:HeaderContainer scrollStep="200" scrollTime="500" showDividers="true">
+			<commons:items>
+				<TileContent footer="{i18n>VehicleDetails.TripStatistics.TripsClassified}">
+					<content>
+						<!--<mc:RadialMicroChart percentage="{blockdata>/percentageClassified}" total="100" valueColor="{blockdata>/classificationStatus}"/>-->
+						<NumericContent scale="%" value="{blockdata>/percentageClassified}" valueColor="{blockdata>/classificationStatus}"/>
+					</content>
+				</TileContent>
+				<TileContent footer="{i18n>VehicleDetails.TripStatistics.NumberOfTrips}">
+					<content>
+						<NumericContent scale="#" value="{data>/ClassifiedTripStatistics/NumberOfTrips30d}" valueColor="Neutral"/>
+					</content>
+				</TileContent>
+				<TileContent footer="{i18n>VehicleDetails.TripStatistics.AvgTripsDay}">
+					<content>
+						<NumericContent scale="#" value="{data>/ClassifiedTripStatistics/AvgTripsPerDay30d}" valueColor="Neutral"/>
+					</content>
+				</TileContent>
+				<TileContent footer="{i18n>VehicleDetails.TripStatistics.TotalTripDuration}">
+					<content>
+						<NumericContent scale="{i18n>VehicleDetails.TripStatistics.Scale.Hours}" value="{path:'data>/ClassifiedTripStatistics/TotalTripDuration30d', formatter: '.timeFormatterHrs'}" valueColor="Neutral"/>
+					</content>
+				</TileContent>
+				<TileContent footer="{i18n>VehicleDetails.TripStatistics.AvgTripDuration}">
+					<content>
+						<NumericContent scale="{i18n>VehicleDetails.TripStatistics.Scale.Minutes}" value="{path:'data>/ClassifiedTripStatistics/AvgTripDuration30d', formatter: '.timeFormatterMin'}" valueColor="Neutral"/>
+					</content>
+				</TileContent>
+			</commons:items>
+		</commons:HeaderContainer>
+</mvc:View>

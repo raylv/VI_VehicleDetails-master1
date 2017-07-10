@@ -1,0 +1,104 @@
+<mvc:View 
+	controllerName="sap.vi.VehicleDetails.controller.VehicleDetails" 
+	xmlns:vbm="sap.ui.vbm" 
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:wt="sap.vi.VehicleDetails.control"
+	xmlns:l="sap.ui.layout" 
+	xmlns:core="sap.ui.core"
+	xmlns:vehicleDetails="sap.vi.VehicleDetails.controller.vehicleDetails">
+	<m:Page title="{i18n>VehicleDetails.Title}" showNavButton="true" navButtonPress="onNavBack" >
+		<ObjectPageLayout enableLazyLoading="false" showTitleInHeaderContent="true" showEditHeaderButton="false" busyIndicatorDelay="100" busy="{view>/busy/page}">
+			<headerTitle>
+				<ObjectPageHeader 
+					objectTitle="{= ${vehicleInsights>Name} ? ${vehicleInsights>Name} : ${vehicleInsights>ID} }"
+					objectSubtitle="{vehicleInsights>ModelLabel} {vehicleInsights>MakeLabel}"
+					isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false">
+					<actions>
+						<ObjectPageHeaderActionButton text="Refresh" hideIcon="false" hideText="true" press="onRefresh" icon="sap-icon://refresh"/>
+					</actions>
+				</ObjectPageHeader>
+			</headerTitle>
+			<headerContent>
+			
+			</headerContent>
+			<sections>
+				<ObjectPageSection title="{i18n>VehicleDetails.Section.Summary.Title}">
+					<subSections>
+						<ObjectPageSubSection title="{i18n>VehicleDetails.Section.Summary.Title}">
+							<blocks>
+								<vehicleDetails:SummaryBlock>
+									<vehicleDetails:mappings>
+										<ModelMapping externalModelName="data" internalModelName="data" externalPath=""/>
+										<ModelMapping externalModelName="view" internalModelName="view" externalPath=""/>
+									</vehicleDetails:mappings>
+								</vehicleDetails:SummaryBlock>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection title="{i18n>VehicleDetails.Section.Trips.Title}">
+					<subSections>
+						<ObjectPageSubSection title="{
+							parts: [{path:'i18n>VehicleDetails.Section.Statistics.Title'}, {path:'view>/texts/statisticDays'}],
+							formatter: 'jQuery.sap.formatMessage'}">
+							<blocks>
+								<vehicleDetails:TripStatisticsBlock>
+									<vehicleDetails:mappings>
+										<ModelMapping externalModelName="data" internalModelName="data" externalPath=""/>
+										<ModelMapping externalModelName="view" internalModelName="view" externalPath=""/>
+									</vehicleDetails:mappings>
+								</vehicleDetails:TripStatisticsBlock>
+							</blocks>
+						</ObjectPageSubSection>
+						<ObjectPageSubSection title="{i18n>VehicleDetails.Section.ChronologicalDistribution.Title}">
+							<blocks>
+								<vehicleDetails:TripPopularTimesBlock>
+									<vehicleDetails:mappings>
+										<ModelMapping externalModelName="data" internalModelName="data" externalPath=""/>
+										<ModelMapping externalModelName="view" internalModelName="view" externalPath=""/>
+									</vehicleDetails:mappings>
+								</vehicleDetails:TripPopularTimesBlock>
+							</blocks>
+						</ObjectPageSubSection>
+						<ObjectPageSubSection title="{i18n>VehicleDetails.Section.RecentTrips}">
+							<blocks>
+								<vehicleDetails:TripsBlock>
+									<vehicleDetails:mappings>
+										<ModelMapping externalModelName="data" internalModelName="data" externalPath=""/>
+										<ModelMapping externalModelName="view" internalModelName="view" externalPath=""/>
+									</vehicleDetails:mappings>
+								</vehicleDetails:TripsBlock>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<!--<ObjectPageSection title="Events">-->
+				<!--	<subSections>-->
+				<!--		<ObjectPageSubSection title="Statistics (past 30 days)">-->
+				<!--			<blocks>-->
+				<!--				<vehicleDetails:EventStatisticsBlock>-->
+				<!--					<vehicleDetails:mappings>-->
+				<!--						<ModelMapping externalModelName="data" internalModelName="data" externalPath=""/>-->
+				<!--						<ModelMapping externalModelName="view" internalModelName="view" externalPath=""/>-->
+				<!--					</vehicleDetails:mappings>-->
+				<!--				</vehicleDetails:EventStatisticsBlock>-->
+				<!--			</blocks>-->
+				<!--		</ObjectPageSubSection>-->
+				<!--		<ObjectPageSubSection title="Recent Trips">-->
+				<!--			<blocks>-->
+				<!--				<vehicleDetails:TripsBlock>-->
+				<!--					<vehicleDetails:mappings>-->
+				<!--						<ModelMapping externalModelName="data" internalModelName="data" externalPath=""/>-->
+				<!--						<ModelMapping externalModelName="view" internalModelName="view" externalPath=""/>-->
+				<!--					</vehicleDetails:mappings>-->
+				<!--				</vehicleDetails:TripsBlock>-->
+				<!--			</blocks>-->
+				<!--		</ObjectPageSubSection>-->
+				<!--	</subSections>-->
+				<!--</ObjectPageSection>-->
+			</sections>
+		</ObjectPageLayout>
+	</m:Page>
+</mvc:View>

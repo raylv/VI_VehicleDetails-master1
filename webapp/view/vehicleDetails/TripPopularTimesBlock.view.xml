@@ -1,0 +1,24 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data"
+	controllerName="sap.vi.VehicleDetails.controller.vehicleDetails.TripPopularTimesBlockController">
+	<VBox class="sapUiSmallMargin" busyIndicatorDelay="0" busy="false">
+		<f:SimpleForm editable="true" backgroundDesign="Transparent">
+			<f:content>
+				<Label text="{i18n>VehicleDetails.TripPopularTimesBlock.ShowFor}" />
+				<Select change="onWeekdaySelection">
+					<items>
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Monday}" key="0" />
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Tuesday}" key="1" />
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Wednesday}" key="2" />
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Thursday}" key="3" />
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Friday}" key="4" />
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Saturday}" key="5" />
+						<core:Item text="{i18n>VehicleDetails.TripPopularTimesBlock.Sunday}" key="6" />
+					</items>
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+		<viz:VizFrame id="vizPopularTimes" height='250px' width="100%" vizType='column'>
+		</viz:VizFrame>
+	</VBox>
+</mvc:View>

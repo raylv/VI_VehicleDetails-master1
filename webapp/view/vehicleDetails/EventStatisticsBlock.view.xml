@@ -1,0 +1,10 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core" 
+	xmlns:vbm="sap.ui.vbm"
+	controllerName="sap.vi.VehicleDetails.controller.vehicleDetails.EventStatisticsBlockController">
+
+</mvc:View>
